@@ -1,8 +1,8 @@
 class Solution:
     def calculate(self, s: str) -> int:
+        s = s.replace(' ','')
         inner, outer, result, opt = 0, 0, 0, '+'
         for c in s + '+':
-            if c == ' ': continue
             if c.isdigit():
                 inner = 10 * inner + int(c)
                 continue
