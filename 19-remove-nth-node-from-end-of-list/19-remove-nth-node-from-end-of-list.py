@@ -7,22 +7,31 @@
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        temp = head
+        temp = temp2 = head
+        
+        # Find the length of the linked list
         c = 0
-        while temp:     #Find the length of the linked list
-            c+=1
+        while temp:     
+            c += 1
             temp = temp.next
-        a = c-n+1       #Calculate the node to be removed
+            
+        # Calculate the node to be removed     
+        a = c - n + 1 
+        
         i = 1
-        temp2 = head
         prev = None
-        while i < a:         #Traverse till the node to be removed
-            i+=1
-            prev = temp2     #Prev pointer to point the previous node of the deletion node
+        # Traverse till the node to be removed
+        while i < a:         
+            i += 1
+            # Prev pointer to point the previous node of the deletion node
+            prev = temp2     
             temp2 = temp2.next
-        if temp2==head:
+            
+        if temp2 == head:
             return head.next
-        prev.next = temp2.next    #Link the previous node to the next of the deletion node
+        
+        # Link the previous node to the next of the deletion node
+        prev.next = temp2.next 
         return head
             
         
