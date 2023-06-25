@@ -7,15 +7,14 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         output = []
-        def iot(node):
-            if node is None:
-                return
-                
-            iot(node.left)
-            output.append(node.val)
-            iot(node.right)
-            
-        iot(root)
+
+        if root is None:
+            return output
+
+        output += self.inorderTraversal(root.left)
+        output.append(root.val)
+        output += self.inorderTraversal(root.right)
+
         return output
 
         
