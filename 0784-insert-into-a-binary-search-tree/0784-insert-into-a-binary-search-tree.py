@@ -20,7 +20,7 @@ class Solution:
 
         # Insert new node
         if parent is None:
-            root = new_node
+            return new_node
         elif val < parent.val:
             parent.left = new_node
         else:
