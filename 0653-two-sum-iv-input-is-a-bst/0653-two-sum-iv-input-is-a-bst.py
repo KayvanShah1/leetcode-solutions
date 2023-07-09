@@ -5,33 +5,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    rec = []
+    def __init__(self):
+        self.rec = set()
 
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        if root is not None:
-            complement = k - root.val 
-            if complement in self.rec:
-                return True
+        if not root:
+            return False
 
-            self.rec.append(root.val)
+        if self.findTarget(root.left, k):
+            return True
 
-            return (
-                self.findTarget(root.left, k) 
-                or self.findTarget(root.right, k)
-            )
-                
-        return False
+        if k - root.val in self.rec:
+            return True
 
-class Solution:
-    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        def dfs(node, seen):
-            if not node:
-                return False
+        self.rec.add(root.val)
             
-            if k - node.val in seen:
-                return True
-            
-            seen.add(node.val)            
-            return dfs(node.left, seen) or dfs(node.right, seen)
+        return self.findTarget(root.right, k)
         
-        return dfs(root, set())
