@@ -1,12 +1,3 @@
-# 3241
-# -------
-4231
-1324
-
-2314
-
-
-
 class Solution:
     def __init__(self):
         self.result = []
